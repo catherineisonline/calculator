@@ -5,7 +5,7 @@ import Screen from "./Screen";
 import Keypad from "./Keypad";
 
 
-export default function Calculator() {
+export default function Calculator({setShowError}) {
   const [calc, setCalc] = useState(""); // State variables for the calculator value
   const [calculated, setCalculated] = useState(false); // State variable to track whether calculation is done
   const operations = ["/", "*", "+", "-", "."]; // Array of operations
@@ -66,6 +66,7 @@ export default function Calculator() {
 
   const calculate = () => {
     try {
+      setShowError(true);
       eval(calc);
       setCalculated(true); // Set calculated flag to true
       setCalc(eval(calc).toString()); // Calculate and update the calculator value with the result
